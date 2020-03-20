@@ -54,11 +54,24 @@ module GitSwitch
     JSON.parse(File.read(path), symbolize_names: true)[:accounts]
   end
 
+  def _help
+    puts "Options:"
+    puts "\t* setup \t\t - Install git-switch and add alias to .bashrc"
+    puts "\t* clear \t\t - Clear accounts storage"
+    puts "\t* list \t\t\t - Show all accounts in storage"
+    puts "\t* next \t\t\t - Choice next account in storage"
+    puts "\t* prev \t\t\t - Choice previous account in storage"
+    puts "\t* current \t\t - Show current account"
+    puts "\t* <username> \t\t - Choice account by username"
+    puts "\t* <email> \t\t - Choice account by email"
+    puts "\t* add <username> <email> - Add account to storage"
+  end
+
   def list
     accounts = _accounts
     accounts.each_with_index do |acc, index|
       puts "name:\t#{acc[:name]}\nemail:\t#{acc[:email]}"
-      puts "" if index != accounts.count - 1
+      puts '' if index != accounts.count - 1
     end
   end
 
@@ -137,8 +150,8 @@ when 'clear'
   GitSwitch._clear
 when 'current'
   GitSwitch.current
-when nil
-  puts 'Empty command!'
+when 'help', nil
+  GitSwitch._help
 else
   if ARGV[0].include? '@'
     GitSwitch.switch_by_email ARGV[0]
