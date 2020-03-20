@@ -55,7 +55,7 @@ module GitSwitch
   end
 
   def _help
-    puts "Options:"
+    puts 'Options:'
     puts "\t* setup \t\t - Install git-switch and add alias to .bashrc"
     puts "\t* clear \t\t - Clear accounts storage"
     puts "\t* list \t\t\t - Show all accounts in storage"
