@@ -15,8 +15,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Usage
 
-The main use cases
-
 #### Add git accounts
 
 Add 2 accounts to storage:
