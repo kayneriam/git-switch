@@ -126,31 +126,31 @@ module GitSwitch
 
   def switch_by_name(name)
     account = _find_by_name name
-    _switch account[:name], account[:email]
+    _switch(account[:name], account[:email]) if account.is_a? Hash
   end
 
   def switch_by_email(email)
     account = _find_by_email email
-    _switch account[:name], account[:email]
+    _switch(account[:name], account[:email]) if account.is_a? Hash
   end
 end
 
 case ARGV[0]
-when 'setup'
+when '--setup', '-s'
   GitSwitch._setup
-when 'add'
+when '--add', '-a'
   GitSwitch.add ARGV[1], ARGV[2]
-when 'next'
+when '--next', '-n'
   GitSwitch.next
-when 'prev'
+when '--prev', '-p'
   GitSwitch.prev
-when 'list'
+when '--list', '-l'
   GitSwitch.list
-when 'clear'
+when '--clear', '-cl'
   GitSwitch._clear
-when 'current'
+when '--current', '-c'
   GitSwitch.current
-when 'help', nil
+when '--help', '-h', nil
   GitSwitch._help
 else
   if ARGV[0].include? '@'
