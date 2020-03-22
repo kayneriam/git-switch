@@ -136,21 +136,21 @@ module GitSwitch
 end
 
 case ARGV[0]
-when '--setup', '-s'
+when '--setup', '-s', 'setup'
   GitSwitch._setup
-when '--add', '-a'
+when '--add', '-a', 'add'
   GitSwitch.add ARGV[1], ARGV[2]
-when '--next', '-n'
+when '--next', '-n', 'next'
   GitSwitch.next
-when '--prev', '-p'
+when '--prev', '-p', 'prev'
   GitSwitch.prev
-when '--list', '-l'
+when '--list', '-l', 'list'
   GitSwitch.list
-when '--clear', '-cl'
+when '--clear', '-cl', 'clear'
   GitSwitch._clear
-when '--current', '-c'
+when '--current', '-c', 'current'
   GitSwitch.current
-when '--help', '-h', nil
+when '--help', '-h', 'help', nil
   GitSwitch._help
 else
   if ARGV[0].include? '@'
